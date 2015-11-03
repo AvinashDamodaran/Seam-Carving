@@ -13,6 +13,7 @@
 #include "seam.h"
 
 extern std::string img_name;
+extern bool obj;
 
 namespace Ui {
 class MainWindow;
@@ -29,15 +30,9 @@ public:
 private slots:
 	void on_pushButton_choose_image_clicked();
 
-	void on_pushButton_gpy_clicked();
-
-	void on_pushButton_lpy_clicked();
+	void on_pushButton_save_rem_clicked();
 
 	void on_pushButton_proceed_clicked();
-
-	void on_checkBox_clicked(bool checked);
-
-	void on_pushButton_save_rem_clicked();
 
 private:
     Ui::MainWindow *ui;

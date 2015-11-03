@@ -31,32 +31,10 @@ struct by_energy {
 	}
 };
 
-Mat seamNormal(Mat img, int cols_to_delete, int mode = VER, bool show = true);
-Mat viewPyramids(vector<Mat> pyramids);
-Mat pyUp(Mat img);
-vector<Mat> GPyramids(Mat img, int num_levels);
-vector<Mat> LPyramids(vector<Mat> gaussianPyramids);
-pair< Mat , vector< vector< coord > > > seam(Mat img, int cols_to_delete);
-Mat removeSeams(Mat img, vector< vector< coord > > seams);
-vector< vector< coord > > mapSeams(vector< vector< coord > > seams);
-Mat seamPyramid(vector<Mat> &gaussians, int cols_to_delete);
-
-
-
-struct pointComp {
-	bool operator() (const Point& lhs, const Point& rhs) const
-	{
-		if (lhs.x<rhs.x) return true;
-		else if (lhs.x>rhs.x) return false;
-		else {
-			return lhs.y<rhs.y;
-		}
-	}
-};
+Mat seamNormal(Mat img, int cols_to_delete, int mode = VER);
 
 extern Mat obj_img;
-extern set<Point,pointComp> save;
-extern set<Point,pointComp> rem;
+extern Mat bin_img;
 extern string draw_winname;
 
 void obj_draw(int event, int x, int y, int flags, void* param);

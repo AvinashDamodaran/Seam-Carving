@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>598</height>
+    <height>429</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="pushButton_choose_image">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>100</x>
       <y>10</y>
       <width>211</width>
       <height>61</height>
@@ -27,50 +27,11 @@
      <string>Choose Image</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_gpy">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>80</y>
-      <width>211</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>View Gaussian Pyramids</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_lpy">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>150</y>
-      <width>211</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>View Laplacian Pyramids</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="checkBox">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>230</y>
-      <width>281</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Seam Carving with Image Pyramids</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label1">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>270</y>
+      <x>120</x>
+      <y>100</y>
       <width>141</width>
       <height>17</height>
      </rect>
@@ -82,8 +43,8 @@
    <widget class="QLabel" name="label2">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>300</y>
+      <x>120</x>
+      <y>130</y>
       <width>141</width>
       <height>17</height>
      </rect>
@@ -95,8 +56,8 @@
    <widget class="QLineEdit" name="lineEdit_num_rows_del">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>320</y>
+      <x>260</x>
+      <y>150</y>
       <width>81</width>
       <height>29</height>
      </rect>
@@ -108,8 +69,8 @@
    <widget class="QLabel" name="label_num_rows_del">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>330</y>
+      <x>50</x>
+      <y>160</y>
       <width>201</width>
       <height>17</height>
      </rect>
@@ -121,8 +82,8 @@
    <widget class="QLabel" name="label_num_cols_del">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>360</y>
+      <x>50</x>
+      <y>190</y>
       <width>201</width>
       <height>20</height>
      </rect>
@@ -134,8 +95,8 @@
    <widget class="QLineEdit" name="lineEdit_num_cols_del">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>360</y>
+      <x>260</x>
+      <y>190</y>
       <width>81</width>
       <height>29</height>
      </rect>
@@ -147,8 +108,8 @@
    <widget class="QLabel" name="label_num_rows">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>270</y>
+      <x>250</x>
+      <y>100</y>
       <width>91</width>
       <height>17</height>
      </rect>
@@ -160,8 +121,8 @@
    <widget class="QLabel" name="label_num_cols">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>300</y>
+      <x>250</x>
+      <y>130</y>
       <width>91</width>
       <height>17</height>
      </rect>
@@ -173,8 +134,8 @@
    <widget class="QPushButton" name="pushButton_proceed">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>470</y>
+      <x>100</x>
+      <y>300</y>
       <width>211</width>
       <height>61</height>
      </rect>
@@ -186,8 +147,8 @@
    <widget class="QPushButton" name="pushButton_save_rem">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>400</y>
+      <x>100</x>
+      <y>230</y>
       <width>211</width>
       <height>61</height>
      </rect>

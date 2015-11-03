@@ -5,8 +5,7 @@ using namespace std;
 using namespace cv;
 
 string img_name = "";
-int num_levels = 3;
-bool with_impy = false;
+bool obj = false;
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -42,30 +41,16 @@ void MainWindow::on_pushButton_choose_image_clicked()
 	}
 }
 
-void MainWindow::on_pushButton_gpy_clicked()
+void MainWindow::on_pushButton_save_rem_clicked()
 {
-	Mat img = imread(img_name);
-	vector<Mat> gpy = GPyramids(img, num_levels);
-	Mat gpyimg = viewPyramids(gpy);
-	imshow("Gaussian Pyramids",gpyimg);
+	obj = true;
+	obj_img = imread(img_name);
+	bin_img = Mat::zeros(obj_img.rows, obj_img.cols,obj_img.type());
+	namedWindow(draw_winname,WINDOW_AUTOSIZE | WINDOW_OPENGL);
+	setMouseCallback( draw_winname, obj_draw, NULL);
+	imshow(draw_winname, obj_img);
 	waitKey();
 	destroyAllWindows();
-}
-
-void MainWindow::on_pushButton_lpy_clicked()
-{
-	Mat img = imread(img_name);
-	vector<Mat> gpy = GPyramids(img, num_levels);
-	vector<Mat> lpy = LPyramids(gpy);
-	Mat lpyimg = viewPyramids(lpy);
-	imshow("Laplacian Pyramids",lpyimg);
-	waitKey();
-	destroyAllWindows();
-}
-
-void MainWindow::on_checkBox_clicked(bool checked)
-{
-	with_impy = checked;
 }
 
 void MainWindow::on_pushButton_proceed_clicked()
@@ -73,33 +58,12 @@ void MainWindow::on_pushButton_proceed_clicked()
 	Mat img = imread(img_name);
 	int rows_to_delete = ui->lineEdit_num_rows_del->text().toInt();
 	int cols_to_delete = ui->lineEdit_num_cols_del->text().toInt();
-	if (with_impy){
-		vector<Mat> gpy = GPyramids(img, num_levels);
-		img = seamPyramid(gpy,cols_to_delete);
-		if (rows_to_delete > 0){
-			img = img.t();
-			vector<Mat> gpy = GPyramids(img, num_levels);
-			img = seamPyramid(gpy,rows_to_delete);
-			img = img.t();
-		}
-		imwrite("../DIA_Ass4/Seam Carving with pyramids.jpg",img);
-	} else {
-		img = seamNormal(img,cols_to_delete,VER,true);
-		img = seamNormal(img,rows_to_delete,HOR,true);
-		imshow("Seam Carving",img);
-		imwrite("../DIA_Ass4/Seam Carving Normal.jpg",img);
-	}
+
+	img = seamNormal(img,cols_to_delete,VER);
+	img = seamNormal(img,rows_to_delete,HOR);
+	imwrite("../DIA_Ass4/Seam Carving Normal.jpg",img);
 	imshow("Seam Carving",img);
 	waitKey();
 	destroyAllWindows();
-}
-
-void MainWindow::on_pushButton_save_rem_clicked()
-{
-	obj_img = imread(img_name);
-	namedWindow(draw_winname,WINDOW_AUTOSIZE | WINDOW_OPENGL);
-	setMouseCallback( draw_winname, obj_draw, NULL);
-	imshow(draw_winname, obj_img);
-	waitKey();
-	destroyAllWindows();
+	obj = false;
 }
