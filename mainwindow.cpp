@@ -35,6 +35,9 @@ void MainWindow::on_pushButton_choose_image_clicked()
 		ui->lineEdit_num_cols_del->setValidator(new QIntValidator(0,img.cols-2,this));
 		ui->lineEdit_num_rows_del->setValidator(new QIntValidator(0,img.rows-2,this));
 
+		ui->lineEdit_num_cols_insert->setValidator(new QIntValidator(0,img.cols,this));
+		ui->lineEdit_num_rows_insert->setValidator(new QIntValidator(0,img.rows,this));
+
 		imshow("Image File",img);
 		waitKey();
 		destroyAllWindows();
@@ -61,9 +64,18 @@ void MainWindow::on_pushButton_proceed_clicked()
 
 	img = seamNormal(img,cols_to_delete,VER);
 	img = seamNormal(img,rows_to_delete,HOR);
-	imwrite("../DIA_Ass4/Seam Carving Normal.jpg",img);
-	imshow("Seam Carving",img);
+	imwrite("../DIA_Ass4/Seam Carving Deletion.jpg",img);
+	imshow("Seam Deletion",img);
 	waitKey();
 	destroyAllWindows();
 	obj = false;
+
+	int rows_to_insert = ui->lineEdit_num_rows_insert->text().toInt();
+	int cols_to_insert = ui->lineEdit_num_cols_insert->text().toInt();
+	img = seamInsertion(img,cols_to_insert,VER);
+	img = seamInsertion(img,rows_to_insert,HOR);
+	imwrite("../DIA_Ass4/Seam Carving Insertion.jpg",img);
+	imshow("Seam Insertion",img);
+	waitKey();
+	destroyAllWindows();
 }

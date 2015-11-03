@@ -32,6 +32,7 @@ struct by_energy {
 };
 
 Mat seamNormal(Mat img, int cols_to_delete, int mode = VER);
+Mat seamInsertion(Mat orig_img, int cols_to_insert, int mode);
 
 extern Mat obj_img;
 extern Mat bin_img;

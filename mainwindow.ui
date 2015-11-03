@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>429</height>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -63,7 +63,7 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_num_rows_del">
@@ -102,7 +102,7 @@
      </rect>
     </property>
     <property name="text">
-     <string/>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_num_rows">
@@ -135,7 +135,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>300</y>
+      <y>400</y>
       <width>211</width>
       <height>61</height>
      </rect>
@@ -155,6 +155,58 @@
     </property>
     <property name="text">
      <string>Save/Remove Objects</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_num_rows_insert">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>320</y>
+      <width>81</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_num_rows_insert">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>330</y>
+      <width>201</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Number of Rows to insert   : </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_num_cols_insert">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>360</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Number of Cols to insert     : </string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_num_cols_insert">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>360</y>
+      <width>81</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
     </property>
    </widget>
   </widget>
