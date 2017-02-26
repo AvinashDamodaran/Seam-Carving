@@ -19,7 +19,7 @@ Mat seamNormal(Mat img, int cols_to_delete, int mode){
 		// Calculate Laplacian
 		Mat blured, gray, dst, grad;
 		GaussianBlur( img, blured, Size(3,3), 0, 0, BORDER_DEFAULT );
-		cvtColor( blured, gray, CV_BGR2GRAY );
+        cvtColor( blured, gray, COLOR_BGR2GRAY );
 		Laplacian( gray, dst, CV_16S, 3, 1, 0, BORDER_DEFAULT );
 		convertScaleAbs( dst, grad );
 
@@ -94,19 +94,6 @@ Mat seamNormal(Mat img, int cols_to_delete, int mode){
 		for (int j=img.rows-1; j>=0; j--){
 			img.at<Vec3b>(j,index) = {0,0,255};
 			index += table[j][index].path;
-
-//			if (obj){
-//				// paint save/rem points
-//				for (int i=0; i<bin_img.rows;i++){
-//					for (int j=0; j<bin_img.cols;j++){
-//						if (bin_img.at<Vec3b>(i,j) == Vec3b({0,0,255}))
-//							img.at<Vec3b>(i,j) = Vec3b({0,0,255});
-//						else if (bin_img.at<Vec3b>(i,j) == Vec3b({0,255,0}))
-//							img.at<Vec3b>(i,j) = Vec3b({0,255,0});
-//					}
-//				}
-//			}
-
 		}
 
 		if (mode == HOR)
@@ -156,7 +143,7 @@ Mat seamInsertion(Mat orig_img, int cols_to_insert, int mode){
 		// Calculate Laplacian
 		Mat blured, gray, dst, grad;
 		GaussianBlur( img, blured, Size(3,3), 0, 0, BORDER_DEFAULT );
-		cvtColor( blured, gray, CV_BGR2GRAY );
+        cvtColor( blured, gray, COLOR_BGR2GRAY );
 		Laplacian( gray, dst, CV_16S, 3, 1, 0, BORDER_DEFAULT );
 		convertScaleAbs( dst, grad );
 
@@ -273,26 +260,26 @@ Mat obj_img;
 Mat bin_img;
 string draw_winname = "Draw to explicitly save/remove objects";
 
-void obj_draw(int event, int x, int y, int flags, void* param){
+void obj_draw(int event, int x, int y, int /*flags*/, void* /*param*/){
 	//	qDebug() << "These are to save size : " << save.size();
 	//	qDebug() << "These are to remove size : " << rem.size();
-	if (event == CV_EVENT_LBUTTONDOWN){
+    if (event == EVENT_LBUTTONDOWN){
 		left_button_down = true;
-	}else if (event == CV_EVENT_RBUTTONDOWN){
+    }else if (event == EVENT_RBUTTONDOWN){
 		right_button_down = true;
-	} else if (event == CV_EVENT_MOUSEMOVE && right_button_down){
-		int rad = 4;
+    } else if (event == EVENT_MOUSEMOVE && right_button_down){
+		int rad = 5;
 		circle(obj_img, Point(x,y), rad, RED, -1);
 		circle(bin_img, Point(x,y), rad, RED, -1);
 		imshow(draw_winname,obj_img);
-	} else if (event == CV_EVENT_MOUSEMOVE && left_button_down){
-		int rad = 4;
+    } else if (event == EVENT_MOUSEMOVE && left_button_down){
+		int rad = 5;
 		circle(obj_img, Point(x,y), rad, GREEN, -1);
 		circle(bin_img, Point(x,y), rad, GREEN, -1);
 		imshow(draw_winname,obj_img);
-	} else if (event == CV_EVENT_LBUTTONUP){
+    } else if (event == EVENT_LBUTTONUP){
 		left_button_down = false;
-	} else if (event == CV_EVENT_RBUTTONUP){
+    } else if (event == EVENT_RBUTTONUP){
 		right_button_down = false;
 	}
 }

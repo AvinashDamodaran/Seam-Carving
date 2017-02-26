@@ -12,6 +12,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
+	ui->lineEdit_num_cols_del->setEnabled(false);
+	ui->lineEdit_num_cols_insert->setEnabled(false);
+	ui->lineEdit_num_rows_del->setEnabled(false);
+	ui->lineEdit_num_rows_insert->setEnabled(false);
+	ui->pushButton_proceed->setEnabled(false);
+	ui->pushButton_save_rem->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -23,8 +29,7 @@ void MainWindow::on_pushButton_choose_image_clicked()
 {
 	QString fname = QFileDialog::getOpenFileName(this,"Choose Image","",tr("Image Files (*.png *.jpg *.bmp)"));
 	if (fname == ""){
-		QMessageBox::information(this, tr("Usage Information"),tr("Please choose an image file. Exitting program."));
-		QApplication::exit();
+		QMessageBox::information(this, tr("Usage Information"),tr("Please choose an image file to continue."));
 	} else {
 		img_name = fname.toStdString();
 		Mat img = imread(img_name);
@@ -38,18 +43,24 @@ void MainWindow::on_pushButton_choose_image_clicked()
 		ui->lineEdit_num_cols_insert->setValidator(new QIntValidator(0,img.cols,this));
 		ui->lineEdit_num_rows_insert->setValidator(new QIntValidator(0,img.rows,this));
 
-		imshow("Image File",img);
-		waitKey();
-		destroyAllWindows();
+		ui->lineEdit_num_cols_del->setEnabled(true);
+		ui->lineEdit_num_cols_insert->setEnabled(true);
+		ui->lineEdit_num_rows_del->setEnabled(true);
+		ui->lineEdit_num_rows_insert->setEnabled(true);
+		ui->pushButton_proceed->setEnabled(true);
+		ui->pushButton_save_rem->setEnabled(true);
+
+		ui->pushButton_choose_image->setText("Choose another Image");
 	}
 }
 
 void MainWindow::on_pushButton_save_rem_clicked()
 {
+	QMessageBox::information(this, tr("Usage Information"),tr("Press right mouse button and drag over an object to delete it. Similarly, press left mouse button and drag over an object to save it."));
 	obj = true;
 	obj_img = imread(img_name);
 	bin_img = Mat::zeros(obj_img.rows, obj_img.cols,obj_img.type());
-	namedWindow(draw_winname,WINDOW_AUTOSIZE | WINDOW_OPENGL);
+    namedWindow(draw_winname,WINDOW_AUTOSIZE);
 	setMouseCallback( draw_winname, obj_draw, NULL);
 	imshow(draw_winname, obj_img);
 	waitKey();
@@ -58,6 +69,13 @@ void MainWindow::on_pushButton_save_rem_clicked()
 
 void MainWindow::on_pushButton_proceed_clicked()
 {
+	ui->lineEdit_num_cols_del->setEnabled(false);
+	ui->lineEdit_num_cols_insert->setEnabled(false);
+	ui->lineEdit_num_rows_del->setEnabled(false);
+	ui->lineEdit_num_rows_insert->setEnabled(false);
+	ui->pushButton_proceed->setEnabled(false);
+	ui->pushButton_save_rem->setEnabled(false);
+
 	Mat img = imread(img_name);
 	int rows_to_delete = ui->lineEdit_num_rows_del->text().toInt();
 	int cols_to_delete = ui->lineEdit_num_cols_del->text().toInt();
@@ -78,4 +96,6 @@ void MainWindow::on_pushButton_proceed_clicked()
 	imshow("Seam Insertion",img);
 	waitKey();
 	destroyAllWindows();
+
+	img_name = "";
 }

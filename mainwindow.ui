@@ -17,14 +17,14 @@
    <widget class="QPushButton" name="pushButton_choose_image">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>70</x>
       <y>10</y>
-      <width>211</width>
+      <width>261</width>
       <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>Choose Image</string>
+     <string>Choose Image to continue</string>
     </property>
    </widget>
    <widget class="QLabel" name="label1">
@@ -147,14 +147,14 @@
    <widget class="QPushButton" name="pushButton_save_rem">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>70</x>
       <y>230</y>
-      <width>211</width>
+      <width>261</width>
       <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>Save/Remove Objects</string>
+     <string>Draw to Save or Remove Objects</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_num_rows_insert">
@@ -216,7 +216,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
